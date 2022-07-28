@@ -21,4 +21,19 @@
         </dependency>
     </dependencies>
 
+<!--    <properties>-->
+<!--        <mysql.version>8.0.20</mysql.version>-->
+<!--    </properties>-->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
