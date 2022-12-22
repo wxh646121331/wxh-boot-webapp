@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<t2sdk-configuration>
+	<performance heartbeatTime="400" acquireConnWaitTime="5000"
+		registerTime="5" reconnInterval="0" localServerName="wxh-boot-webapp"
+		callBackTime="5000" enmCompress="true" senderQueueLength="200"
+		sendPoolSize="50" />
+	<parents>
+		<parent parentName="my-server" safeLevel="NONE">
+			<limit licenseFile="classpath:client_licence_3rd.dat" encrypt="HSBlowfish" ufxPassword="12345678" />
+			<members>
+				<member no="0" address="198.28.1.133" port="19004" poolSize="5" charset="gbk" isMaster="true"/>
+				<member no="1" address="198.28.1.133" port="19004" poolSize="5" charset="gbk"/>
+			</members>
+		</parent>
+	</parents>
+	<callBackMethods>
+		<method id="3" className="com.wxh.boot.t2.Callback" />
+	</callBackMethods>
+</t2sdk-configuration>

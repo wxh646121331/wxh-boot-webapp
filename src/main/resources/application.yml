@@ -1,0 +1,8 @@
+person:
+  name: Peter
+  age: 1
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
