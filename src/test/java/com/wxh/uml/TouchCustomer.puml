@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TouchCustomerClient{
+    touchCustomer(Long templateId, Long filterId)
+}
+
+class TouchCustomerFactory{
+    List<TouchCustomerStrategy> touchCustomerStrategyList;
+    TouchCustomerStrategy codeOf(TouchType);
+}
+
+interface TouchCustomerStrategy{
+    touchCustomer(String title, String content, Long filterId);
+    TouchType touchType();
+}
+
+abstract class AbstractTouchStrategy{
+    touchCustomer(String title, String content, Long filterId);
+    abstract touchCustomer(String title, String content, List<CustomerListEntity> list);
+}
+
+class AppMsgTouchStrategy{
+    touchCustomer(String title, String content, List<CustomerListEntity> list);
+    TouchType touchType();
+}
+
+class SmsTouchStrategy{
+    touchCustomer(String title, String content, List<CustomerListEntity> list);
+        TouchType touchType();
+}
+
+AbstractTouchStrategy <|-- SmsTouchStrategy
+AbstractTouchStrategy <|-- AppMsgTouchStrategy
+TouchCustomerStrategy <|-- AbstractTouchStrategy
+TouchCustomerFactory o--TouchCustomerStrategy
+TouchCustomerClient o-- TouchCustomerFactory
+
+
+enum TouchType {
+SMS
+APP_MSG
+}
+
+@enduml
