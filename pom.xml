@@ -108,6 +108,16 @@
             <artifactId>javacv</artifactId>
             <version>1.4.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>4.3.1</version>
+        </dependency>
     </dependencies>
 
 <!--    <properties>-->
