@@ -83,35 +83,35 @@ public class StockController {
         return res ? "success" : "fail";
     }
 
-    @RequestMapping("/deduct11")
-    public String deduct11(){
-        boolean res = stockService.deduct7();
-        return res ? "success" : "fail";
-    }
+//    @RequestMapping("/deduct11")
+//    public String deduct11(){
+//        boolean res = stockService.deduct7();
+//        return res ? "success" : "fail";
+//    }
 
-    @RequestMapping("/read/lock")
-    public String readLock(){
-        boolean res = stockService.readLock();
-        return res ? "success" : "fail";
-    }
+//    @RequestMapping("/read/lock")
+//    public String readLock(){
+//        boolean res = stockService.readLock();
+//        return res ? "success" : "fail";
+//    }
 
-    @RequestMapping("/write/lock")
-    public String writeLock(){
-        boolean res = stockService.writeLock();
-        return res ? "success" : "fail";
-    }
+//    @RequestMapping("/write/lock")
+//    public String writeLock(){
+//        boolean res = stockService.writeLock();
+//        return res ? "success" : "fail";
+//    }
 
-    @RequestMapping("/countdown")
-    public String testCountDown(){
-        stockService.countdown();
-        return "success";
-    }
+//    @RequestMapping("/countdown")
+//    public String testCountDown(){
+//        stockService.countdown();
+//        return "success";
+//    }
 
-    @RequestMapping("latch")
-    public String testLatch(){
-        stockService.latch();
-        return "success";
-    }
+//    @RequestMapping("latch")
+//    public String testLatch(){
+//        stockService.latch();
+//        return "success";
+//    }
 
     public static void main(String[] args) {
         Triple<Integer, Boolean, String> triple = new Triple<>(1, false, "test");

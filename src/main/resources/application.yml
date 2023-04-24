@@ -4,5 +4,36 @@ person:
 
 spring:
   redis:
-    host: localhost
-    port: 6379
+#    database: 0
+#    host: localhost
+#    port: 6379
+#    username: default
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 1ms
+        max-idle: 8
+        min-idle: 0
+      cluster:
+        refresh:
+          adaptive: true  # 支持集群拓扑动态感应刷新，自适应拓扑刷新是否使用所有可用的更新，默认关闭
+          period: 2000 #定时刷新
+    cluster:
+      max-redirects: 3
+      nodes:
+        - 127.0.0.1:6381
+        - 127.0.0.1:6382
+        - 127.0.0.1:6383
+        - 127.0.0.1:6384
+        - 127.0.0.1:6385
+        - 127.0.0.1:6386
+
+
+#  swagger2:
+#  swagger2:
+#    enabled:true
+#  mvc:
+#    pathmatch:
+#      matching-strategy=ant_path_matcher
+

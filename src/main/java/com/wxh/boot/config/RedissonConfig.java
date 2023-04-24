@@ -16,7 +16,7 @@ public class RedissonConfig {
     @Bean
     public RedissonClient redissonClient(){
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6379");  // redis服务器地址
+        config.useSingleServer().setAddress("redis://localhost:6379").setPassword("123456");  // redis服务器地址
 //                .setDatabase(0)  // 指定数据库编号
 //                .setUsername("").setPassword("")  // 设置账号密码
 //                .setConnectionMinimumIdleSize(10)  //  连接池最小空闲连接数
@@ -27,8 +27,8 @@ public class RedissonConfig {
         return Redisson.create(config);
     }
 
-    @Bean
-    public RedissonClient redissonClient2(){
-        return Redisson.create();
-    }
+//    @Bean
+//    public RedissonClient redissonClient2(){
+//        return Redisson.create();
+//    }
 }

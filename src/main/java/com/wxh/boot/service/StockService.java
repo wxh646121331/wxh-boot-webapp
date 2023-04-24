@@ -46,8 +46,8 @@ public class StockService {
 
     ReentrantLock lock = new ReentrantLock();
 
-    @Autowired
-    private RedissonClient redissonClient;
+//    @Autowired
+//    private RedissonClient redissonClient;
 
     /**
      * 事务会导致JVM锁失效
@@ -213,71 +213,71 @@ public class StockService {
         redisLock.unlock();
     }
 
-    public boolean deduct7(){
-        RLock rlock = redissonClient.getLock("lock");
-        rlock.lock(30L, TimeUnit.SECONDS);
-        boolean res = false;
-        try{
-            String stock = stringRedisTemplate.opsForValue().get("stock");
-            if(null != stock && stock.length()>0) {
-                Integer st = Integer.valueOf(stock);
-                if(st<=0){
-                    res = false;
-                }else {
-                    stringRedisTemplate.opsForValue().set("stock", String.valueOf(--st));
-                    res = true;
-                }
-            }
-        }finally {
-            rlock.unlock();
-        }
-        return res;
-    }
-
-    public boolean readLock() {
-        RReadWriteLock lock = redissonClient.getReadWriteLock("readWriteLock");
-        lock.readLock().lock(10L, TimeUnit.SECONDS);
-        return true;
-    }
-
-    public boolean writeLock() {
-        RReadWriteLock lock = redissonClient.getReadWriteLock("readWriteLock");
-        lock.writeLock().lock(10L, TimeUnit.SECONDS);
-        return true;
-    }
-
-    public void semaphore() {
-        RSemaphore semaphore = redissonClient.getSemaphore("semaphore");
-        semaphore.trySetPermits(3);
-        try {
-            semaphore.acquire();
-            // TODO 业务逻辑
-            semaphore.release();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void testCountDownLatch(){
-        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
-    }
-
-    public void latch(){
-        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
-        anyCountDownLatch.trySetCount(6L);
-        try {
-            anyCountDownLatch.await();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("班长锁门了");
-    }
-
-    public void countdown() {
-        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
-        anyCountDownLatch.countDown();
-        System.out.println("出来了一位同学");
-    }
+//    public boolean deduct7(){
+//        RLock rlock = redissonClient.getLock("lock");
+//        rlock.lock(30L, TimeUnit.SECONDS);
+//        boolean res = false;
+//        try{
+//            String stock = stringRedisTemplate.opsForValue().get("stock");
+//            if(null != stock && stock.length()>0) {
+//                Integer st = Integer.valueOf(stock);
+//                if(st<=0){
+//                    res = false;
+//                }else {
+//                    stringRedisTemplate.opsForValue().set("stock", String.valueOf(--st));
+//                    res = true;
+//                }
+//            }
+//        }finally {
+//            rlock.unlock();
+//        }
+//        return res;
+//    }
+//
+//    public boolean readLock() {
+//        RReadWriteLock lock = redissonClient.getReadWriteLock("readWriteLock");
+//        lock.readLock().lock(10L, TimeUnit.SECONDS);
+//        return true;
+//    }
+//
+//    public boolean writeLock() {
+//        RReadWriteLock lock = redissonClient.getReadWriteLock("readWriteLock");
+//        lock.writeLock().lock(10L, TimeUnit.SECONDS);
+//        return true;
+//    }
+//
+//    public void semaphore() {
+//        RSemaphore semaphore = redissonClient.getSemaphore("semaphore");
+//        semaphore.trySetPermits(3);
+//        try {
+//            semaphore.acquire();
+//            // TODO 业务逻辑
+//            semaphore.release();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    public void testCountDownLatch(){
+//        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
+//    }
+//
+//    public void latch(){
+//        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
+//        anyCountDownLatch.trySetCount(6L);
+//        try {
+//            anyCountDownLatch.await();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println("班长锁门了");
+//    }
+//
+//    public void countdown() {
+//        RCountDownLatch anyCountDownLatch = redissonClient.getCountDownLatch("anyCountDownLatch");
+//        anyCountDownLatch.countDown();
+//        System.out.println("出来了一位同学");
+//    }
 
 
 }
