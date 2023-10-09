@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * @author wuxinhong
@@ -14,7 +15,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 //@SpringBootApplication(scanBasePackages = "com.wxh")
-@EnableAutoConfiguration
+@EnableJpaRepositories
 public class MyApplication {
 
     public static void main(String[] args) {

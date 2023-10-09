@@ -14,12 +14,16 @@ import java.util.List;
  * @author wuxinhong
  * @date 2022/12/20 3:22 PM
  */
-@SpringBootApplication
+//@SpringBootApplication
 @Mapper
 public interface StockMapper extends BaseMapper<Stock> {
-    @Update("update db_stock set count = count - #{count} where product_code = #{productCode} and count >= #{count}")
-    int updateStock(@Param("productCode") String productCode, @Param("count") Integer count);
+//        extends BaseMapper<Stock> {
+//    @Update("update db_stock set count = count - #{count} where product_code = #{productCode} and count >= #{count}")
+//    int updateStock(@Param("productCode") String productCode, @Param("count") Integer count);
 
-    @Select("select * from db_stock where product_code = #{productCode} for update")
-    List<Stock> queryStockForUpdate(@Param("productCode") String productCode);
+//    @Select("select * from db_stock where product_code = #{productCode} for update")
+//    List<Stock> queryStockForUpdate(@Param("productCode") String productCode);
+
+    @Select("select * from src_zndt where id = #{id}")
+    List<Stock> queryStockForUpdate(@Param("id") Long id);
 }
